@@ -18,15 +18,22 @@ export default function ListField(props: {
         {props.key}
       </label>
       <For each={props.value}>{(item, index) => (
-        <DynamicField
-          class={"my-4"}
-          metadata={props.metadata.entryType}
-          nesting={props.nesting}
-          key={`${props.key}[${index() + 1}]`}
-          value={item}
-          onUpdate={(val) => {
-            setValue(index(), val)
-          }}/>
+        <div>
+          <DynamicField
+            actions={
+              <Button>
+                Delete
+              </Button>
+            }
+            class={"my-4"}
+            metadata={props.metadata.entryType}
+            nesting={props.nesting}
+            key={`${props.key}[${index() + 1}]`}
+            value={item}
+            onUpdate={(val) => {
+              setValue(index(), val);
+            }}/>
+        </div>
       )}</For>
       <div class={"my-4"}/>
       <Button

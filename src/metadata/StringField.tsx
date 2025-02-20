@@ -1,6 +1,7 @@
 import {StringPropertyMetadata} from "~/metadata/Metadata";
 import {TextField, TextFieldErrorMessage, TextFieldLabel, TextFieldRoot} from "~/components/ui/textfield";
 import {Show} from "solid-js";
+import {Button} from "~/components/ui/button";
 
 export default function StringField(props: {
   key: string;

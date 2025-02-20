@@ -15,15 +15,17 @@ export default function JavaObjectField(props: {
     <div class={"flex flex-col border rounded-md p-4 m-4"}>
       <label class="font-semibold p-2 m-2">{props.key}</label>
       <For each={Object.entries(props.metadata.fields)}>{([fieldName, fieldMeta]) => (
-        <DynamicField
-          class={"p-2 mx-16"}
-          metadata={fieldMeta}
-          nesting={props.nesting}
-          key={fieldName}
-          value={value[fieldName]}
-          onUpdate={(val) => {
-            setValue(fieldName, val)
-          }}/>
+        <>
+          <DynamicField
+            class={"p-2 mx-16"}
+            metadata={fieldMeta}
+            nesting={props.nesting}
+            key={fieldName}
+            value={value[fieldName]}
+            onUpdate={(val) => {
+              setValue(fieldName, val)
+            }}/>
+        </>
       )}</For>
     </div>
   )

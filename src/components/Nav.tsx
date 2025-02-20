@@ -9,34 +9,22 @@ export default function Nav() {
   return (
     <NavigationMenu class="p-4">
       <NavigationMenuItem>
-        <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+        <NavigationMenuTrigger as={"a"}>Home</NavigationMenuTrigger>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Support</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <NavigationMenuLink>Link</NavigationMenuLink>
+          <NavigationMenuLink>Discord</NavigationMenuLink>
+          <NavigationMenuLink>GitHub</NavigationMenuLink>
         </NavigationMenuContent>
       </NavigationMenuItem>
       <NavigationMenuItem>
-        <NavigationMenuTrigger>Item Two</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Wiki</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-        </NavigationMenuContent>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <NavigationMenuTrigger>Item TwThro</NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-          <NavigationMenuLink>Link</NavigationMenuLink>
+          <NavigationMenuLink>Properties</NavigationMenuLink>
+          <NavigationMenuLink>Modules</NavigationMenuLink>
         </NavigationMenuContent>
       </NavigationMenuItem>
     </NavigationMenu>
-
   );
 }

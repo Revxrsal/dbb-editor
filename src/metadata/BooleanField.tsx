@@ -8,7 +8,7 @@ export default function BooleanField(props: {
   metadata: BooleanPropertyMetadata
 }) {
   return (
-    <Switch class={"my-2 mx-2"}
+    <Switch class={"my-4 mx-2"}
             onChange={e => props.onUpdate(e)}
             checked={props.value}
     >

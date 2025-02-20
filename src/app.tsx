@@ -4,18 +4,21 @@ import {Suspense} from "solid-js";
 import Nav from "~/components/Nav";
 import "./app.css";
 import {ColorModeProvider, ColorModeScript} from "@kobalte/core";
+import {MetaProvider} from "@solidjs/meta";
 
 export default function App() {
   return (
     <Router
       root={props => (
-        <>
+        <MetaProvider>
           <Nav/>
           <Suspense>
             <ColorModeScript/>
-            <ColorModeProvider>{props.children}</ColorModeProvider>
+            <ColorModeProvider>
+              {props.children}
+            </ColorModeProvider>
           </Suspense>
-        </>
+        </MetaProvider>
       )}
     >
       <FileRoutes/>

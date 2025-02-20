@@ -1,4 +1,4 @@
-import {Match, Switch} from "solid-js";
+import {JSXElement, Match, Switch} from "solid-js";
 import StringField from "~/metadata/StringField";
 import DecimalField from "~/metadata/DecimalField";
 import {
@@ -23,7 +23,8 @@ export const DynamicField = (props: {
   value: any;
   metadata: Metadata;
   onUpdate: (value: any) => void,
-  nesting: number
+  nesting: number,
+  actions?: JSXElement
 }) => {
   const metadata = props.metadata
   return (
