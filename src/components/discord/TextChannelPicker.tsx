@@ -5,9 +5,11 @@ export default function TextChannelPicker(props: {
   channels: TextChannel[],
   selectedChannel: TextChannel | null,
   onChannelSelected: (textChannel: TextChannel | null) => void,
+  class?: string
 }) {
   return (
     <Select
+      class={props.class}
       options={props.channels}
       optionValue="id"
       value={props.selectedChannel}

@@ -5,9 +5,11 @@ export default function RolePicker(props: {
   roles: Role[],
   selectedRole: Role | null,
   onRoleSelected: (role: Role | null) => void,
+  class?: string
 }) {
   return (
     <Select
+      class={props.class}
       options={props.roles}
       optionValue="id"
       value={props.selectedRole}
