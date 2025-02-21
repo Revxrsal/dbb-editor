@@ -39,6 +39,16 @@ export const Playground: Guild = {
       id: "336920458492641280",
       name: "needs v",
       color: 0xFFFABE
+    },
+    {
+      id: "662747112011111555",
+      name: "Bog",
+      color: 0xCCFEBB
+    },
+    {
+      id: "322222458492641280",
+      name: "Garbage",
+      color: 0xAA1111
     }
   ],
   textChannels: [

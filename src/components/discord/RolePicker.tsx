@@ -1,5 +1,6 @@
 import {Role} from "~/discord.types";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "../ui/select";
+import {unwrap} from "solid-js/store";
 
 export default function RolePicker(props: {
   roles: Role[],
@@ -13,7 +14,7 @@ export default function RolePicker(props: {
       options={props.roles}
       optionValue="id"
       value={props.selectedRole}
-      onChange={props.onRoleSelected}
+      onChange={v => props.onRoleSelected(unwrap(v))}
       optionTextValue={v => '@' + v.name}
       placeholder="Select a role…"
       itemComponent={(props) => (

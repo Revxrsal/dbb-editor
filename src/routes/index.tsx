@@ -1,27 +1,103 @@
 import {Title} from "@solidjs/meta";
+import {toaster} from "@kobalte/core";
 import {Button} from "~/components/ui/button";
-import GuildComponent from "~/components/discord/GuildComponent";
+import {Sample} from "~/metadata/Sample";
+import {createSignal} from "solid-js";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "~/components/ui/card";
+import {Switch, SwitchControl, SwitchLabel, SwitchThumb} from "~/components/ui/switch";
+import {DynamicField} from "~/metadata/DynamicField";
 import {Playground} from "~/discord.types";
+import {Toast, ToastContent, ToastDescription, ToastProgress, ToastTitle} from "~/components/ui/toast";
+
+interface ModuleMeta {
+  name: string;
+  id: string;
+  description: string;
+  version: string;
+  author: string;
+}
+
+const SomeModule: ModuleMeta = {
+  name: "Auto-role",
+  id: "autorole",
+  description: "A module that automatically gives roles to users upon joining the server",
+  version: "1.0.0",
+  author: "Built-in",
+}
+
+const ToastDemo = () => {
+  const showToast = () => {
+    toaster.show((props) => (
+      <Toast toastId={props.toastId}>
+        <ToastContent>
+          <ToastTitle>
+            Scheduled: Catch up
+          </ToastTitle>
+          <ToastDescription>
+            Sending changes to the server...
+          </ToastDescription>
+        </ToastContent>
+        <ToastProgress/>
+      </Toast>
+    ));
+  };
+
+  return (
+    <Button class={"mx-2"} variant="outline" onClick={showToast}>
+      Add to calendar
+    </Button>
+  );
+};
+
+function Module(props: { module: ModuleMeta }) {
+  const [enabled, setEnabled] = createSignal(true)
+  return (
+    <Card class={"m-4"}>
+      <CardHeader>
+        <CardTitle class={"my-4"}>{props.module.name}</CardTitle>
+        <CardDescription>{props.module.description}</CardDescription>
+      </CardHeader>
+      <CardContent class={"flex justify-between"}>
+        <Switch checked={enabled()} onChange={setEnabled} class={"flex items-center"}>
+          <SwitchControl>
+            <SwitchThumb/>
+          </SwitchControl>
+          <SwitchLabel
+            class="text-sm font-medium leading-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 mx-2">
+            Enabled
+          </SwitchLabel>
+        </Switch>
+        <Button class={"justify-end"}>Configure</Button>
+      </CardContent>
+    </Card>
+  )
+}
 
 export default function Home() {
-  // const [v, setV] = createStore(Sample.value)
+  const [v, setV] = createSignal(Sample.value)
   return (
-    <main class="flex flex-col mx-auto p-4 w-full select-none">
+    <main class="flex flex-col items-center mx-auto p-4 w-full select-none">
       <Title>Discord Bot Builder</Title>
 
-      <div class={"flex"}>
-        <div class={"flex flex-col"}>
-          <h1>Discord Bot Builder</h1>
-          <p class={"w-3/4"}>A 100% zero-code, royalty-free, self-hosted, customizable Discord Bot Builder for Minecraft
-            servers</p>
-          <div class="flex my-8">
-            <Button class={"m-2"}>Get started</Button>
-            <Button class={"m-2"} variant={"ghost"}>Browse modules</Button>
-          </div>
-        </div>
+      <h1 class={"text-center my-4"}>Modules</h1>
+      <div class="flex flex-wrap">
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
+        <Module module={SomeModule}/>
       </div>
-      <GuildComponent guild={Playground}/>
-      {/*<DynamicField metadata={Sample.metadata} nesting={0} key={"hi"} value={v} onUpdate={setV}/>*/}
     </main>
   );
 }

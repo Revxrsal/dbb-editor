@@ -3,9 +3,11 @@ import {For} from "solid-js";
 import {DynamicField} from "~/metadata/DynamicField";
 import {Button} from "~/components/ui/button";
 import {createStore} from "solid-js/store";
+import {Guild} from "~/discord.types";
 
 export default function MapField(props: {
   key: any;
+  guild: Guild;
   onUpdate: (value: any) => void;
   value: any;
   metadata: MapPropertyMetadata;
@@ -20,6 +22,7 @@ export default function MapField(props: {
       <For each={Object.entries(value)}>{([subKey, value]) => (
         <div class={"flex align-middle rounded-md my-4 p-2 mx-4"}>
           <DynamicField
+            guild={props.guild}
             class={"mx-4 my-4"}
             metadata={props.metadata.keyType}
             nesting={props.nesting}
@@ -30,6 +33,7 @@ export default function MapField(props: {
                 setValue(newKey, value)
             }}/>
           <DynamicField
+            guild={props.guild}
             class={"mx-4"}
             metadata={props.metadata.valueType}
             nesting={props.nesting}

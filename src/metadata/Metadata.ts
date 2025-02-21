@@ -1,21 +1,18 @@
-type PropertyType =
-  | "string"
-  | "integer"
-  | "decimal"
-  | "boolean"
-  | "list"
-  | "enum"
-  | "map"
-  | "object";
-
 export type Metadata = BooleanPropertyMetadata
   | StringPropertyMetadata
   | DecimalPropertyMetadata
   | LongPropertyMetadata
   | EnumPropertyMetadata
+  | EnumListPropertyMetadata
   | ListPropertyMetadata
   | MapPropertyMetadata
   | JavaObjectPropertyMetadata
+  | TextChannelPropertyMetadata
+  | VoiceChannelPropertyMetadata
+  | RolePropertyMetadata
+  | TextChannelListPropertyMetadata
+  | VoiceChannelListPropertyMetadata
+  | RoleListPropertyMetadata
 
 export interface BooleanPropertyMetadata {
   type: "boolean";
@@ -35,6 +32,11 @@ export interface LongPropertyMetadata {
 
 export interface EnumPropertyMetadata {
   type: "enum";
+  options: string[];
+}
+
+export interface EnumListPropertyMetadata {
+  type: "enum_list";
   options: string[];
 }
 
@@ -64,6 +66,34 @@ export interface StringPropertyMetadata {
   maxLength: number;
 }
 
+export interface RolePropertyMetadata {
+  type: "role";
+}
+
+export interface TextChannelPropertyMetadata {
+  type: "text_channel";
+}
+
+export interface VoiceChannelPropertyMetadata {
+  type: "voice_channel";
+}
+
+export interface RoleListPropertyMetadata {
+  type: "role_list";
+}
+
+export interface TextChannelListPropertyMetadata {
+  type: "text_channel_list";
+}
+
+export interface VoiceChannelListPropertyMetadata {
+  type: "voice_channel_list";
+}
+
+export interface EnumListPropertyMetadata {
+  type: "enum_list";
+}
+
 export function createEmptyValue(metadata: Metadata): any {
   switch (metadata.type) {
     case "string":
@@ -74,8 +104,12 @@ export function createEmptyValue(metadata: Metadata): any {
       return 0.0;
     case "boolean":
       return false;
+    case "voice_channel_list":
+    case "text_channel_list":
+    case "role_list":
     case "list":
-      return [];
+    case "enum_list":
+      return []
     case "enum":
       return metadata.options[0];
     case "map":
@@ -86,5 +120,9 @@ export function createEmptyValue(metadata: Metadata): any {
         v[key] = createEmptyValue(value);
       }
       return v;
+    case "role":
+    case "text_channel":
+    case "voice_channel":
+      return null
   }
 }

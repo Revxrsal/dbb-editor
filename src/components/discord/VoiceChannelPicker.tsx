@@ -1,6 +1,5 @@
 import {VoiceChannel} from "~/discord.types";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "../ui/select";
-import {FaSolidVolumeLow} from "solid-icons/fa";
 import {ImVolumeMedium} from "solid-icons/im";
 
 export default function VoiceChannelPicker(props: {

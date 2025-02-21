@@ -2,9 +2,11 @@ import {JavaObjectPropertyMetadata} from "~/metadata/Metadata";
 import {For} from "solid-js";
 import {DynamicField} from "~/metadata/DynamicField";
 import {createStore} from "solid-js/store";
+import {Guild} from "~/discord.types";
 
 export default function JavaObjectField(props: {
   key: string;
+  guild: Guild;
   value: any;
   onUpdate: (value: any) => void;
   metadata: JavaObjectPropertyMetadata;
@@ -17,6 +19,7 @@ export default function JavaObjectField(props: {
       <For each={Object.entries(props.metadata.fields)}>{([fieldName, fieldMeta]) => (
         <>
           <DynamicField
+            guild={props.guild}
             class={"p-2 mx-16"}
             metadata={fieldMeta}
             nesting={props.nesting}

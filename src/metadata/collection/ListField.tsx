@@ -3,10 +3,12 @@ import {For} from "solid-js";
 import {DynamicField} from "~/metadata/DynamicField";
 import {Button} from "~/components/ui/button";
 import {createStore} from "solid-js/store";
+import {Guild} from "~/discord.types";
 
 export default function ListField(props: {
   key: string;
   value: any[];
+  guild: Guild;
   onUpdate: (value: any[]) => void;
   metadata: ListPropertyMetadata;
   nesting: number;
@@ -20,6 +22,7 @@ export default function ListField(props: {
       <For each={props.value}>{(item, index) => (
         <div>
           <DynamicField
+            guild={props.guild}
             actions={
               <Button>
                 Delete

@@ -5,6 +5,7 @@ import Nav from "~/components/Nav";
 import "./app.css";
 import {ColorModeProvider, ColorModeScript} from "@kobalte/core";
 import {MetaProvider} from "@solidjs/meta";
+import {ToastList, ToastRegion} from "~/components/ui/toast";
 
 export default function App() {
   return (
@@ -16,6 +17,9 @@ export default function App() {
             <ColorModeScript/>
             <ColorModeProvider>
               {props.children}
+              <ToastRegion>
+                <ToastList/>
+              </ToastRegion>
             </ColorModeProvider>
           </Suspense>
         </MetaProvider>
