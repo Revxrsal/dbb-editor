@@ -3,21 +3,12 @@ import {toaster} from "@kobalte/core";
 import {Button} from "~/components/ui/button";
 import {Sample} from "~/metadata/Sample";
 import {createSignal} from "solid-js";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "~/components/ui/card";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "~/components/ui/card";
 import {Switch, SwitchControl, SwitchLabel, SwitchThumb} from "~/components/ui/switch";
-import {DynamicField} from "~/metadata/DynamicField";
-import {Playground} from "~/discord.types";
 import {Toast, ToastContent, ToastDescription, ToastProgress, ToastTitle} from "~/components/ui/toast";
+import {ModuleMetadata} from "~/app.types";
 
-interface ModuleMeta {
-  name: string;
-  id: string;
-  description: string;
-  version: string;
-  author: string;
-}
-
-const SomeModule: ModuleMeta = {
+const SomeModule: ModuleMetadata = {
   name: "Auto-role",
   id: "autorole",
   description: "A module that automatically gives roles to users upon joining the server",
@@ -49,7 +40,7 @@ const ToastDemo = () => {
   );
 };
 
-function Module(props: { module: ModuleMeta }) {
+function Module(props: { module: ModuleMetadata }) {
   const [enabled, setEnabled] = createSignal(true)
   return (
     <Card class={"m-4"}>
